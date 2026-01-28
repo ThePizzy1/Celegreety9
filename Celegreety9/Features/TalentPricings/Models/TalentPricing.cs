@@ -9,6 +9,6 @@
         public string StripeProductId { get; set; }
         public string StripePersonalPriceId { get; set; }
         public string StripeBusinessPriceId { get; set; }
-        public DateTime PricesLastSyncedAt { get; set; }
+       
     }
 }

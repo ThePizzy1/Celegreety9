@@ -46,7 +46,7 @@
                 StripeProductId = productId,
                 StripePersonalPriceId = personalPriceId,
                 StripeBusinessPriceId = businessPriceId,
-                PricesLastSyncedAt = DateTime.UtcNow
+            
             };
 
             await _repo.UpsertTalentPricingAsync(pricing);

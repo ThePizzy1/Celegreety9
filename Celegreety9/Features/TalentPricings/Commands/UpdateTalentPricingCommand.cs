@@ -47,7 +47,7 @@ namespace Celegreety7.Features.TalentPricings.Commands
                 StripeProductId = existing.StripeProductId,
                 StripePersonalPriceId = personalPriceId,
                 StripeBusinessPriceId = businessPriceId,
-                PricesLastSyncedAt = DateTime.UtcNow
+           
             };
 
             await _repo.UpsertTalentPricingAsync(pricing);

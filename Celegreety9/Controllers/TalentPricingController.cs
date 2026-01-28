@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Celegreety9.Controllers
 {
     [ApiController]
-    [Route("api/[controller]")]
+    [Route("api/talentpricing")]
     public class TalentPricingController : ControllerBase
     {
         private readonly ITalentPricingRepository _repo;
@@ -32,7 +32,7 @@ namespace Celegreety9.Controllers
             pricing.StripeProductId = productId;
             pricing.StripePersonalPriceId = personalPriceId;
             pricing.StripeBusinessPriceId = businessPriceId;
-            pricing.PricesLastSyncedAt = DateTime.UtcNow;
+
 
             await _repo.UpsertTalentPricingAsync(pricing);
             await _repo.InsertPricingHistoryAsync(new PricingHistory
@@ -70,7 +70,7 @@ namespace Celegreety9.Controllers
             existing.BusinessPrice = pricing.BusinessPrice;
             existing.StripePersonalPriceId = personalPriceId;
             existing.StripeBusinessPriceId = businessPriceId;
-            existing.PricesLastSyncedAt = DateTime.UtcNow;
+            
 
             await _repo.UpsertTalentPricingAsync(existing);
   
@@ -88,7 +88,7 @@ namespace Celegreety9.Controllers
             return Ok(existing);
         }
 
-        [HttpGet("{talentId}")]
+        [HttpGet]
         public async Task<IActionResult> Get(int talentId)
         {
             var current = await _repo.GetTalentPricingAsync(talentId);
